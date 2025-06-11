@@ -1,7 +1,10 @@
 package com.igor.AppListaCurso0033.View;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -14,6 +17,7 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.igor.AppListaCurso0033.CRUD.BancoDeDados;
 import com.igor.AppListaCurso0033.Controller.Controller;
 import com.igor.AppListaCurso0033.Model.Pessoa;
 import com.igor.AppListaCurso0033.R;
@@ -38,6 +42,8 @@ public class MainActivity extends AppCompatActivity {
         Pessoa pessoa = new Pessoa();
         controller = new Controller(this);
 
+        BancoDeDados bd = new BancoDeDados(this);
+        SQLiteDatabase banco = bd.getWritableDatabase();
 
         controller.Buscar(pessoa);
         controller.toStrign();
@@ -58,6 +64,13 @@ public class MainActivity extends AppCompatActivity {
         Salvar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                ContentValues valores = new ContentValues();
+                valores.put("NAME", pessoa.getNome());
+                valores.put("LASTNAME", pessoa.getSobrenome());
+                valores.put("CURSO", pessoa.getCurso());
+                valores.put("FONE", pessoa.getTelefone());
+                banco.insert("PESSOAS", null, valores);
+                banco.close();
                 pessoa.setNome(primeiroNome = Nome.getText().toString());
                 pessoa.setSobrenome(sobrenome = Sobrenome.getText().toString());
                 pessoa.setCurso(curso = Curso.getText().toString());
