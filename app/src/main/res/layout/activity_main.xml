@@ -1,24 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".View.MainActivity">
+    android:layout_height="wrap_content"
+    android:gravity="center"
+    tools:context=".View.MainActivity"
+    android:orientation="vertical"
+    android:layout_alignParentBottom="true">
 
     <TextView
         android:id="@+id/Titulo"
         android:layout_width="wrap_content"
+        android:paddingTop="10dp"
+        android:paddingStart="30dp"
         android:layout_height="wrap_content"
         android:text="Aplicativo Lista Curso"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.057" />
+        android:textSize="20sp"/>
 
     <EditText
         android:id="@+id/PrimeiroNome"
@@ -27,10 +26,7 @@
         android:layout_marginTop="20dp"
         android:ems="10"
         android:hint="Primeiro Nome"
-        android:inputType="text"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Titulo" />
+        android:inputType="text" />
 
     <EditText
         android:id="@+id/Sobrenome"
@@ -39,10 +35,7 @@
         android:layout_marginTop="56dp"
         android:ems="10"
         android:hint="Sobrenome"
-        android:inputType="text"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/PrimeiroNome" />
+        android:inputType="text"/>
 
     <EditText
         android:id="@+id/Curso"
@@ -51,10 +44,7 @@
         android:layout_marginTop="56dp"
         android:ems="10"
         android:hint="Curso"
-        android:inputType="text"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Sobrenome" />
+        android:inputType="text"/>
 
     <EditText
         android:id="@+id/Telefone"
@@ -63,41 +53,38 @@
         android:layout_marginTop="56dp"
         android:ems="10"
         android:hint="Telefone"
-        android:inputType="text"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Curso" />
+        android:inputType="text"/>
 
-    <Button
-        android:id="@+id/btnLimpar"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="52dp"
-        android:layout_marginEnd="136dp"
-        android:text="Limpar"
-        app:layout_constraintEnd_toStartOf="@+id/btnSalvar"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Telefone" />
+        android:paddingVertical="30dp"
+        android:gravity="center"
+        android:paddingTop="30dp"
+        android:orientation="horizontal">
 
-    <Button
-        android:id="@+id/btnSalvar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="52dp"
-        android:layout_marginEnd="52dp"
-        android:text="Salvar"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Telefone" />
+        <Button
+            android:id="@+id/btnSalvar"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_margin="5dp"
+            android:text="Salvar" />
+
+
+        <Button
+            android:id="@+id/btnLimpar"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:layout_weight="1"
+            android:text="Limpar" />
+    </LinearLayout>
 
     <Button
         android:id="@+id/btnFinalizar"
-        android:layout_width="219dp"
-        android:layout_height="49dp"
-        android:layout_marginTop="128dp"
-        android:text="Finalizar"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Telefone" />
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+        android:layout_width="200dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="20dp"
+        android:text="Finalizar" />
+</LinearLayout>
