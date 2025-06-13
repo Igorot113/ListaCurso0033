@@ -1,11 +1,12 @@
 package com.igor.AppListaCurso0033.View;
 
-import android.content.Context;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
@@ -19,10 +20,11 @@ import com.igor.AppListaCurso0033.Model.Pessoa;
 import com.igor.AppListaCurso0033.R;
 
 public class MainActivity extends AppCompatActivity {
-    private EditText Nome, Sobrenome, Curso, Telefone;
+    private EditText Nome, Sobrenome, Telefone;
     private Button Salvar,Limpar,Finalizar;
-    String primeiroNome,sobrenome,curso,telefone;
+    String primeiroNome,sobrenome,telefone,selectedItem;
     Controller controller;
+    Spinner spinner;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,23 +46,47 @@ public class MainActivity extends AppCompatActivity {
 
         Nome = findViewById(R.id.PrimeiroNome);
         Sobrenome = findViewById(R.id.Sobrenome);
-        Curso = findViewById(R.id.Curso);
         Telefone = findViewById(R.id.Telefone);
         Salvar = findViewById(R.id.btnSalvar);
         Limpar = findViewById(R.id.btnLimpar);
         Finalizar = findViewById(R.id.btnFinalizar);
+        spinner = findViewById(R.id.spinner_cursos);
 
         Nome.setText(pessoa.getNome());
         Sobrenome.setText(pessoa.getSobrenome());
-        Curso.setText(pessoa.getCurso());
         Telefone.setText(pessoa.getTelefone());
+
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(
+                this,
+                R.array.spinner_cursos,
+                android.R.layout.simple_spinner_item
+        );
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner.setAdapter(adapter);
+
+        if (pessoa.getCurso() != null && !pessoa.getCurso().isEmpty()) {
+            int spinnerPosition = adapter.getPosition(pessoa.getCurso());
+            spinner.setSelection(spinnerPosition);
+        }
+
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                selectedItem = (String) parent.getItemAtPosition(position);
+
+                Toast.makeText(getBaseContext(), "Selecionado: " + selectedItem, Toast.LENGTH_SHORT).show();
+            }
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+            }
+        });
 
         Salvar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 pessoa.setNome(primeiroNome = Nome.getText().toString());
                 pessoa.setSobrenome(sobrenome = Sobrenome.getText().toString());
-                pessoa.setCurso(curso = Curso.getText().toString());
+                pessoa.setCurso(selectedItem);
                 pessoa.setTelefone(telefone = Telefone.getText().toString());
                 controller.Salvar(pessoa);
             }
@@ -68,9 +94,9 @@ public class MainActivity extends AppCompatActivity {
         Limpar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                spinner.setSelection(0);
                 Nome.setText("");
                 Sobrenome.setText("");
-                Curso.setText("");
                 Telefone.setText("");
                 controller.Limpar();
             }

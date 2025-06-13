@@ -5,19 +5,19 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:layout_alignParentBottom="true"
     android:gravity="center"
-    tools:context=".View.MainActivity"
     android:orientation="vertical"
-    android:layout_alignParentBottom="true">
+    tools:context=".View.MainActivity">
 
     <TextView
         android:id="@+id/Titulo"
         android:layout_width="wrap_content"
-        android:paddingTop="10dp"
-        android:paddingStart="30dp"
         android:layout_height="wrap_content"
+        android:paddingStart="30dp"
+        android:paddingTop="10dp"
         android:text="Aplicativo Lista Curso"
-        android:textSize="20sp"/>
+        android:textSize="20sp" />
 
     <EditText
         android:id="@+id/PrimeiroNome"
@@ -32,43 +32,41 @@
         android:id="@+id/Sobrenome"
         android:layout_width="255dp"
         android:layout_height="63dp"
-        android:layout_marginTop="56dp"
+        android:layout_marginTop="50dp"
         android:ems="10"
         android:hint="Sobrenome"
         android:inputType="text"/>
 
-    <EditText
-        android:id="@+id/Curso"
+    <Spinner
+        android:id="@+id/spinner_cursos"
         android:layout_width="255dp"
         android:layout_height="63dp"
-        android:layout_marginTop="56dp"
-        android:ems="10"
-        android:hint="Curso"
-        android:inputType="text"/>
+        android:layout_marginTop="50dp"
+        android:ems="10"/>
 
     <EditText
         android:id="@+id/Telefone"
         android:layout_width="255dp"
         android:layout_height="63dp"
-        android:layout_marginTop="56dp"
+        android:layout_marginTop="50dp"
         android:ems="10"
         android:hint="Telefone"
-        android:inputType="text"/>
+        android:inputType="text" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingVertical="30dp"
         android:gravity="center"
-        android:paddingTop="30dp"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:paddingVertical="30dp"
+        android:paddingTop="30dp">
 
         <Button
             android:id="@+id/btnSalvar"
             android:layout_width="100dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
             android:layout_margin="5dp"
+            android:layout_weight="1"
             android:text="Salvar" />
 
 
@@ -87,4 +85,5 @@
         android:layout_height="48dp"
         android:layout_marginTop="20dp"
         android:text="Finalizar" />
+
 </LinearLayout>

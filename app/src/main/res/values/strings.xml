@@ -1,3 +1,13 @@
 <resources>
     <string name="app_name">AppListaCurso0033</string>
+    <string-array name="spinner_cursos">
+        <item>Escolha um curso</item>
+        <item>Desenvolvedor Web</item>
+        <item>Desenvolvedor Backend</item>
+        <item>Desenvolvedor Fullstack</item>
+        <item>Game Develop</item>
+        <item>Cyber Security</item>
+        <item>Vibe Code</item>
+    </string-array>
 </resources>
+
